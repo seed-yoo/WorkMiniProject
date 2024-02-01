@@ -34,12 +34,12 @@ public class WorkApp {
 					System.out.print("▪ 부서번호를 입력해주세요 >>");
 					int dno = sc.nextInt();
 					sc.nextLine();
-					System.out.print("▪ 유저아이디를 입력해주세요 >>");
+					System.out.print("▪ 팀장 이름을 입력해주세요 >>");
 					String uid = sc.nextLine();
 					System.out.print("▪ 부서이름을 입력해주세요 >>");
 					String dname = sc.nextLine();
 
-					departmentVo = new DepartmentVo(dno, uid, dname);
+					departmentVo = new DepartmentVo(dno, dname, uid);
 					WorkDao workDao = new WorkDao();
 					workDao.departmentInsert(departmentVo);
 
@@ -51,12 +51,12 @@ public class WorkApp {
 					System.out.print("▪ 수정 할 부서번호를 입력해주세요 >>");
 					int dno = sc.nextInt();
 					sc.nextLine();
-					System.out.print("▪ 수정 할 유저아이디를 입력해주세요 >>");
-					String uid = sc.nextLine();
 					System.out.print("▪ 수정 할 부서이름을 입력해주세요 >>");
 					String dname = sc.nextLine();
+					System.out.print("▪ 수정 할 팀장이름을 입력해주세요 >>");
+					String uid = sc.nextLine();
 
-					departmentVo = new DepartmentVo(dno, uid, dname);
+					departmentVo = new DepartmentVo(dno, dname, uid);
 					WorkDao workDao = new WorkDao();
 					workDao.departmentUpdate(departmentVo);
 
@@ -71,7 +71,7 @@ public class WorkApp {
 					String uid = null;
 					String dname = null;
 
-					departmentVo = new DepartmentVo(dno, uid, dname);
+					departmentVo = new DepartmentVo(dno, dname, uid);
 					WorkDao workDao = new WorkDao();
 					workDao.departmentUpdate(departmentVo);
 
@@ -170,7 +170,7 @@ public class WorkApp {
 					String work_date = sc.nextLine();
 	
 					while (true) {
-						System.out.println("▪ 근무상태를 입력해주세요(근무/휴무/병가/무단결근)");
+						System.out.println("▪ 근무상태를 입력해주세요(근무/휴가/병가/무단결근)");
 						System.out.print(">");
 						String work_state = sc.nextLine();
 						if (work_state.equals("근무") || work_state.equals("휴가") || work_state.equals("병가")
@@ -201,7 +201,7 @@ public class WorkApp {
 	
 					for (DepartmentVo vo : departmentList) {
 	
-						System.out.println(vo.getDepartment_id() + "\t |" + vo.getUser_id() + "\t |"
+						System.out.println(vo.getDepartment_id() + "\t |" + vo.getTeam_leader() + "\t |"
 								+ vo.getDepartment_name() + "\t |");
 						System.out.println("---------+-------+-------|");
 	

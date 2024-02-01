@@ -203,8 +203,8 @@ public class WorkDao {
 			// - sql문 준비
 			String query = "";
 			query += " select department_id, ";
-			query += "        user_id, ";
-			query += "        department_name ";
+			query += "        department_name, ";
+			query += "        team_leader ";
 			query += " from department ";
 
 			// - 바인딩
@@ -217,11 +217,11 @@ public class WorkDao {
 			while (rs.next()) {
 
 				int department_id = rs.getInt("department_id");
-				String user_id = rs.getString("user_id");
 				String department_name = rs.getString("department_name");
+				String team_leader = rs.getString("team_leader");
 
 				// Vo묶기
-				DepartmentVo departmentVo = new DepartmentVo(department_id, user_id, department_name);
+				DepartmentVo departmentVo = new DepartmentVo(department_id, department_name, team_leader);
 
 				// 리스트에 추가
 				departmentList.add(departmentVo);
@@ -254,8 +254,8 @@ public class WorkDao {
 			// - 바인딩
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, departmentVo.getDepartment_id());
-			pstmt.setString(2, departmentVo.getUser_id());
-			pstmt.setString(3, departmentVo.getDepartment_name());
+			pstmt.setString(2, departmentVo.getDepartment_name());
+			pstmt.setString(3, departmentVo.getTeam_leader());
 
 			// - 실행
 			count = pstmt.executeUpdate();
@@ -287,17 +287,17 @@ public class WorkDao {
 
 			String query = "";
 			query += " update department ";
-			query += " set user_id = ?, ";
-			query += " 	   department_name = ? ";
+			query += " set department_name = ?, ";
+			query += " 	   team_leader = ? ";
 			query += " where department_id = ? ";
 			// - 바인딩
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, departmentVo.getUser_id());
-			pstmt.setString(2, departmentVo.getDepartment_name());
+			pstmt.setString(1, departmentVo.getDepartment_name());
+			pstmt.setString(2, departmentVo.getTeam_leader());
 			pstmt.setInt(3, departmentVo.getDepartment_id());
 
 			// - 실행
-			// count = pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 
 			// 4.결과처리
 			// System.out.println(count + "건 수정 되었습니다.");
