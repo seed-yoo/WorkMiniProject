@@ -196,7 +196,7 @@ public class WorkApp {
 					System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■");
 					List<DepartmentVo> departmentList = workDao.departmentList();
 					System.out.println("---------+-------+-------+");
-					System.out.println("부서번호" + "\t |" + "아이디" + "\t |" + "부서이름" + "\t |");
+					System.out.println("부서번호" + "\t |" + "부서장" + "\t |" + "부서이름" + "\t |");
 					System.out.println("---------+-------+-------|");
 	
 					for (DepartmentVo vo : departmentList) {
