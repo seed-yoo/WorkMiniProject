@@ -14,15 +14,14 @@ public class UserApp {
 		String hP;
 		String addresS;
 		String emaiL;
-		
-		
+
 		WorkDao dda = new WorkDao();
 		HistoryDao historyDao = new HistoryDao();
 
 		Scanner sc = new Scanner(System.in);
 
 		String ID; // 로그인 했을때의 아이디 기록용
-		
+
 		System.out.println();
 		System.out.println("\t ꕤ 회원님 환영합니다 ꕤ");
 		System.out.println();
@@ -49,7 +48,7 @@ public class UserApp {
 						System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 						System.out.println("* 돌아가시려면 아이디에 '/q'를 입력해주세요");
 						System.out.println();
-						
+
 						int p;
 						p = 0;
 						System.out.print("아이디:");
@@ -93,7 +92,7 @@ public class UserApp {
 //											String hP;
 //											String addresS;
 //											String emaiL;
-											
+
 											System.out.println();
 											System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 											System.out.println("             나의 정보 수정");
@@ -109,24 +108,24 @@ public class UserApp {
 													String id1 = authorVo1.getUser_id();
 													if (kid.equals(id1)) {
 														zx = 0;
-														
+
 													}
 												}
 												sc.nextLine();
 												if (zx == 1) {
 													System.out.println("  ⤷ 사용할 수 있는 아이디입니다");
 													iD = kid;
-													
+
 													break;
 												} else {
 													System.out.println("  ⤷ 사용할 수 없는 아이디입니다");
 												}
 											}
-											
+
 											System.out.print("▪ 비밀번호(20자 이하):");
 											String aw = sc.nextLine();
 											pW = aw;
-											
+
 											System.out.print("▪ 이름:");
 											String ae = sc.nextLine();
 											namE = ae;
@@ -137,14 +136,13 @@ public class UserApp {
 											System.out.print("▪ 주소(20자 이하):");
 											String ar = sc.nextLine();
 											addresS = ar;
-											
-											
+
 											System.out.print("▪ 이메일:");
 											String ay = sc.nextLine();
 											emaiL = ay;
 
 											dda.userUpdate(ID, iD, pW, namE, hP, addresS, emaiL); // 부서는 바꿀수 없다 외부키 지정
-											
+
 										} else if (le == 2) {
 											// 근태 히스토리 창 출력
 											System.out.println();
@@ -155,14 +153,14 @@ public class UserApp {
 											List<WorkVo> workList = historyDao.workList(ID);
 											System.out.println("-----------+-------------+");
 											System.out.println("날짜" + "\t   |" + "근무상태" + "\t |");
-											System.out.println("-----------+-------------+"); 
+											System.out.println("-----------+-------------+");
 											for (WorkVo vo : workList) {
-												if((vo.getWorkState()).equals("무단결근")) {
-													System.out.println(vo.getWorkDate() + " |"
-															+ vo.getWorkState() + "\t |");
+												if ((vo.getWorkState()).equals("무단결근")) {
+													System.out.println(
+															vo.getWorkDate() + " |" + vo.getWorkState() + "\t |");
 												} else {
-													System.out.println(vo.getWorkDate() + " |"
-															+ vo.getWorkState() + "\t\t |");
+													System.out.println(
+															vo.getWorkDate() + " |" + vo.getWorkState() + "\t\t |");
 												}
 												System.out.println("-----------+-------------+");
 											}
@@ -190,7 +188,7 @@ public class UserApp {
 													System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 													System.out.println("      나의 근태 히스토리 관리 ▶ 등록");
 													System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-													
+
 													System.out.println("등록하고 싶은 날짜를 입력해주세요(xxxx-xx-xx).");
 													System.out.print(">");
 													String work_date = sc.next();
@@ -204,7 +202,7 @@ public class UserApp {
 															System.out.println(
 																	"날짜 : " + work_date + ", 근무상태: " + work_state);
 															WorkVo workVo = new WorkVo(ID, work_state, work_date); // 나중에
-										        								// 바꾸기
+															// 바꾸기
 															historyDao.workInsert(workVo);
 															System.out.println();
 															System.out.println("🙂 등록되었습니다 🙂");
@@ -272,12 +270,13 @@ public class UserApp {
 										System.out.println();
 										System.out.println("☹️ 다시 입력해주세요");
 										System.out.println();
-										sc = new Scanner(System.in); 
+										sc = new Scanner(System.in);
 									}
 								}
 							}
-							
-						}if (rou == 0) {
+
+						}
+						if (rou == 0) {
 							System.out.println();
 							System.out.println("☹️ 없는 아이디입니다");
 							System.out.println();
@@ -295,8 +294,8 @@ public class UserApp {
 						String ky; // hp
 						String ku; // email
 						String ki; // hire
-						int kk;//특정구문으로 탈출하기
-						kk=0;
+						int kk;// 특정구문으로 탈출하기
+						kk = 0;
 
 						while (true) {
 							System.out.println();
@@ -309,8 +308,8 @@ public class UserApp {
 							int zx;
 							zx = 1;
 							String kid = sc.next();
-							if(kid.equals("/q")) {//특정구문으로 탈출하기
-								kk=1;
+							if (kid.equals("/q")) {// 특정구문으로 탈출하기
+								kk = 1;
 							}
 
 							List<UserVo> authorList = dda.klist();
@@ -320,24 +319,25 @@ public class UserApp {
 									zx = 0;
 								}
 							}
-							
-							if ((zx == 1&&kk==0)) {//특정구문으로 탈출하기
+
+							if ((zx == 1 && kk == 0)) {// 특정구문으로 탈출하기
 								System.out.println(" ⤷ 사용할 수 있는 아이디입니다");
 								kq = kid;
 								break;
-							}else if(kk==1) {//특정구문으로 탈출하기
+							} else if (kk == 1) {// 특정구문으로 탈출하기
 								break;
-							}else {
+							} else {
 								System.out.println(" ⤷ 사용할 수 없는 아이디입니다");
 							}
 
-						}if(kk==1) {//특정구문으로 탈출하기
+						}
+						if (kk == 1) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
 							break;
 						}
-						
+
 						System.out.println();
 						System.out.println("    ▫ 부서아이디 선택 ▫");
 						List<DepartmentVo> departmentList = historyDao.departmentList();
@@ -355,19 +355,19 @@ public class UserApp {
 							try {
 								System.out.print("▪ 부서아이디:");
 								int aq = sc.nextInt();
-								int mmmm=0;
-								
+								int mmmm = 0;
+
 								for (DepartmentVo dVo : departmentList) {
 									int di = dVo.getDepartment_id();
 									if (aq == di) {
-										mmmm=1;
+										mmmm = 1;
 									}
 								}
-								if(mmmm==1) {
-									kw=aq;
+								if (mmmm == 1) {
+									kw = aq;
 									break;
 								}
-								
+
 								System.out.println();
 								System.out.println("☹️ 없는 부서번호입니다");
 								System.out.println();
@@ -375,13 +375,12 @@ public class UserApp {
 								System.out.println();
 								System.out.println("☹️ 잘못된 입력입니다 ");
 								System.out.println();
-								sc = new Scanner(System.in); 
+								sc = new Scanner(System.in);
 							}
 
 						}
-						
-						
-						if(kk==1) {//특정구문으로 탈출하기
+
+						if (kk == 1) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
@@ -390,13 +389,13 @@ public class UserApp {
 
 						System.out.print("▪ 비밀번호(20자 이하):");
 						String aw = sc.next();
-						if(aw.equals("/q")) {//특정구문으로 탈출하기
+						if (aw.equals("/q")) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
-							kk=1;
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							break;
 						}
 						ke = aw;
@@ -404,48 +403,48 @@ public class UserApp {
 						System.out.print("▪ 이름:");
 						String ae = sc.next();
 						sc.nextLine();
-						if(ae.equals("/q")) {//특정구문으로 탈출하기
+						if (ae.equals("/q")) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
-							kk=1;
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							break;
 						}
 						kr = ae;
-						
+
 						System.out.print("▪ 주소(20자 이하):");
 						String ar = sc.nextLine();
-						if(ar.equals("/q")) {//특정구문으로 탈출하기
+						if (ar.equals("/q")) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
-							kk=1;
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							break;
 						}
 						kt = ar;
 
 						System.out.print("▪ 휴대폰 번호:");
 						String at = sc.nextLine();
-						if(at.equals("/q")) {//특정구문으로 탈출하기
+						if (at.equals("/q")) {// 특정구문으로 탈출하기
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
-							kk=1;
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							break;
 						}
 						ky = at;
 						System.out.print("▪ 이메일:");
 						String ay = sc.nextLine();
-						if(ay.equals("/q")) {//특정구문으로 탈출하기
-							kk=1;
+						if (ay.equals("/q")) {// 특정구문으로 탈출하기
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
@@ -454,10 +453,10 @@ public class UserApp {
 						ku = ay;
 						System.out.print("▪ 입사일(YYYY-MM-DD):");
 						String au = sc.nextLine();
-						if(au.equals("/q")) {//특정구문으로 탈출하기
-							kk=1;
+						if (au.equals("/q")) {// 특정구문으로 탈출하기
+							kk = 1;
 						}
-						if(kk==1) {
+						if (kk == 1) {
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
@@ -486,7 +485,7 @@ public class UserApp {
 				System.out.println();
 				System.out.println("☹️ 잘못된 입력입니다 ");
 				System.out.println();
-				sc = new Scanner(System.in); 
+				sc = new Scanner(System.in);
 			}
 		}
 	}
