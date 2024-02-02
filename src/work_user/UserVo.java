@@ -25,7 +25,14 @@ public class UserVo {
 		this.pw = pw;
 	}
 
-
+	public void userUpdate(String id, String pw, String name, String hp, String address, String email) {	//생성자 추가
+		this.user_id = user_id;
+		this.pw = pw;
+		this.user_name=name;
+		this.user_hp=hp;
+		this.address=address;
+		this.user_email=email;
+	}
 
 	public UserVo(String user_id, int department_id, String pw, String user_name, String address, String user_hp,
 			String user_email, String hire_date) {
