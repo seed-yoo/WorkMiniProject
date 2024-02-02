@@ -480,5 +480,6 @@ public class UserApp {
 				sc = new Scanner(System.in);
 			}
 		}
+		sc.close();
 	}
 }
