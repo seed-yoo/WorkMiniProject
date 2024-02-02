@@ -1,10 +1,11 @@
 package work_user;
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserApp {
+public class UserAppTest {
 
 	public static void main(String[] args) {
 
@@ -71,7 +72,8 @@ public class UserApp {
 						List<UserVo> authorList = dda.klist();
 						
 						
-						for (UserVo authorVo : authorList) {
+						for (Iterator<UserVo> iterator = authorList.iterator(); iterator.hasNext();) {
+							UserVo authorVo = iterator.next();
 							String id = authorVo.getUser_id();
 							String pw = authorVo.getPw();
 							if ((A.equals(id) && B.equals(pw))) {
@@ -105,8 +107,10 @@ public class UserApp {
 											System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 											System.out.println("             나의 정보 수정");
 											System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-
+											
+											/*
 											while (true) {
+												
 												System.out.print("▪ 아이디(20자 이하):");
 												int zx;
 												zx = 1;
@@ -120,6 +124,7 @@ public class UserApp {
 													}
 												}
 												sc.nextLine();
+												
 												if (zx == 1) {
 													System.out.println("  ⤷ 사용할 수 있는 아이디입니다");
 													iD = kid;
@@ -128,30 +133,33 @@ public class UserApp {
 												} else {
 													System.out.println("  ⤷ 사용할 수 없는 아이디입니다");
 												}
+												
 											}
 											
+											*/
 											System.out.print("▪ 비밀번호(20자 이하):");
-											String aw = sc.nextLine();
+											String aw = sc.next();
 											pW = aw;
 											
 											System.out.print("▪ 이름:");
-											String ae = sc.nextLine();
+											String ae = sc.next();
 											namE = ae;
 
 											System.out.print("▪ 휴대폰 번호:");
-											String at = sc.nextLine();
+											String at = sc.next();
 											hP = at;
 											System.out.print("▪ 주소(20자 이하):");
-											String ar = sc.nextLine();
+											String ar = sc.next();
 											addresS = ar;
+											sc.nextLine();
 											
 											
 											System.out.print("▪ 이메일:");
 											String ay = sc.nextLine();
 											emaiL = ay;
 
-											dda.userUpdate(ID, iD, pW, namE, hP, addresS, emaiL); // 부서는 바꿀수 없다 외부키 지정
-											
+											dda.userUpdate(ID, pW, namE, hP, addresS, emaiL); // 부서는 바꿀수 없다 외부키 지정
+											iterator.remove();
 										} else if (le == 1) {
 											// 근태 히스토리 창 출력
 											System.out.println();

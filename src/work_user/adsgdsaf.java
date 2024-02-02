@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserApp {
+public class adsgdsaf {
 
 	public static void main(String[] args) {
 
@@ -59,6 +59,7 @@ public class UserApp {
 						p = 0;
 						System.out.print("아이디:");
 						String A = sc.next();
+						ID=A;
 						if (A.equals("/q")) { // 아이디에서 바로 탈출
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
@@ -69,11 +70,13 @@ public class UserApp {
 						System.out.print("비밀번호:");
 						String B = sc.next();
 						List<UserVo> authorList = dda.klist();
-						
-						
+						if (rou == 1) {
+							break;
+						}
 						for (UserVo authorVo : authorList) {
 							String id = authorVo.getUser_id();
 							String pw = authorVo.getPw();
+							
 							if ((A.equals(id) && B.equals(pw))) {
 								System.out.println();
 								System.out.println("-----------------------------------------");
@@ -81,7 +84,13 @@ public class UserApp {
 								System.out.println("-----------------------------------------");
 								System.out.println();
 								ID = A;
-
+							}
+							if (rou == 0) {
+								System.out.println();
+								System.out.println("☹️ 없는 아이디입니다");
+								System.out.println();
+							} 
+						}
 								while (true) {
 									try {
 										System.out.println("=================  메뉴  =================");
@@ -282,16 +291,13 @@ public class UserApp {
 										sc = new Scanner(System.in); 
 									}
 								}
+								break;
 							}
 							
-						}if (rou == 0) {
-							System.out.println();
-							System.out.println("☹️ 없는 아이디입니다");
-							System.out.println();
-						} else {
-							break;
-						}
-					}
+						
+						
+						
+					
 				} else if (a == 2) {
 					while (true) {
 						String kq = null; // user_id

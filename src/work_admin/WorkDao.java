@@ -16,7 +16,7 @@ public class WorkDao {
 	private ResultSet rs = null;
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://127.0.0.1:3306/work_db";
+	private String url = "jdbc:mysql://192.168.0.59:3306/work_db";
 	private String id = "work";
 	private String pw = "work";
 
@@ -160,7 +160,7 @@ public class WorkDao {
 			// 1. JDBC 드라이버 (Oracle) 로딩
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// 2. Connection 얻어오기
-			String url = "jdbc:mysql://127.0.0.1:3306/work_db";
+			String url = "jdbc:mysql://192.168.0.59:3306/work_db";
 			conn = DriverManager.getConnection(url, "work", "work");
 			
 			
