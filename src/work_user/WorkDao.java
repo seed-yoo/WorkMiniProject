@@ -59,10 +59,52 @@ public class WorkDao {
 		}
 	}// close()끝
 
-	
+	public UserVo login(String a,String b ) {// for문을 사용하는게 아닌 쿼리를 이용한 대표적인 로그인 방식
+		this.getConnection();
+		UserVo userVo = null;
+		
+		int count=-1;
+		
+		try {
+			this.getConnection();
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query="";
+			query += " select	user_id, ";
+			query += "  		pw ";
+			query += " from user ";
+			query += " where user_id=? and pw=? ";
+
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, a);
+			pstmt.setString(2, b);
+			
+			rs = pstmt.executeQuery();
+			
+			
+			while (rs.next()) {
+
+				a = rs.getString("user_id");
+				b = rs.getString("user_id");
+				userVo = new UserVo(a, b);
+				
+			}
+			
+
+			// 4.결과처리
+			System.out.println(userVo);
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
+		this.close();
+		return userVo;
+
+	}
 
 	public List<UserVo> klist() {
-
+		List<UserVo> userList = new ArrayList<UserVo>();// 신규 리스트를 만들어줘야 신규 생성시마다 리스트가 갱신된다
 
 		try {
 			this.getConnection();
@@ -78,17 +120,17 @@ public class WorkDao {
 				String a = rs.getString("user_id");
 				String b = rs.getString("pw");
 				UserVo vo = new UserVo(a, b);
-				klist.add(vo);
+				userList.add(vo);
 			}
 
 			// 4.결과처리
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
-		} 
-		
+		}
+
 		this.close();
-		return klist;
+		return userList;
 
 	}
 
@@ -122,7 +164,7 @@ public class WorkDao {
 				String id = rs.getString("user_id");
 				String pw = rs.getString("pw");
 
-				UserVo userVo= new UserVo(id, pw);
+				UserVo userVo = new UserVo(id, pw);
 
 				userList.add(userVo);
 			}
@@ -228,9 +270,7 @@ public class WorkDao {
 			query += "		user_address=?, ";
 			query += "		user_email=? ";
 			query += " where user_id = ? ";
-			
-			
-			
+
 			pstmt = conn.prepareStatement(query);
 
 			pstmt.setString(1, pw);
@@ -268,4 +308,6 @@ public class WorkDao {
 		}
 
 	}
+
+	
 }

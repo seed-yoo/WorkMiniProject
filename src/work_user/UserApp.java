@@ -25,8 +25,19 @@ public class UserApp {
 		System.out.println();
 		System.out.println("\t ꕤ 회원님 환영합니다 ꕤ");
 		System.out.println();
-
+		
+		
+		
 		while (true) {
+			List<UserVo> authorList = dda.klist();
+			/*
+			for (UserVo authorVo : authorList) {
+				String id = authorVo.getUser_id();
+				String pw = authorVo.getPw();
+				System.out.println(id+" "+pw);
+			}
+			*/
+			
 			try {
 				System.out.println("============== 목록 ===============");
 				System.out.println("1. 로그인");
@@ -56,19 +67,27 @@ public class UserApp {
 						int p;
 						p = 0;
 						System.out.print("아이디:");
-						String A = sc.next();
+						String A;
+						A=null;
+						A = sc.next();
 						ID = A;
 						if (A.equals("/q")) { // 아이디에서 바로 탈출
 							System.out.println();
 							System.out.println("\t▷ 초기화면으로 돌아갑니다 ◁");
 							System.out.println();
 							p = 1;
+							rou=1;
+							
+						}
+						if(p==1) {
 							break;
 						}
 						
 						System.out.print("비밀번호:");
-						String B = sc.next();
-						List<UserVo> authorList = dda.klist();
+						String B;
+						B=null;
+						B = sc.next();
+						//List<UserVo> authorList = dda.klist();
 						for (UserVo authorVo : authorList) {
 							String id = authorVo.getUser_id();
 							String pw = authorVo.getPw();
@@ -83,10 +102,13 @@ public class UserApp {
 						}if(ii==1) {
 							break;
 						}else {
-							System.out.println("없는 아이디입니다");
+							System.out.println("등록되지 않은 정보입니다");
 						}
 						}
 								while (true) {
+									if(rou==1) {
+										break;
+									}
 									try {
 										System.out.println("=================  메뉴  =================");
 										System.out.println("1. 나의 정보 수정");
@@ -275,6 +297,7 @@ public class UserApp {
 						} else {
 							break;
 						}
+					
 					}
 				} else if (a == 2) {
 					while (true) {
@@ -304,7 +327,7 @@ public class UserApp {
 								kk = 1;
 							}
 
-							List<UserVo> authorList = dda.klist();
+							//List<UserVo> authorList = dda.klist();
 							for (UserVo authorVo : authorList) {
 								String id = authorVo.getUser_id();
 								if (kid.equals(id)) {
@@ -480,6 +503,5 @@ public class UserApp {
 				sc = new Scanner(System.in);
 			}
 		}
-		sc.close();
 	}
 }

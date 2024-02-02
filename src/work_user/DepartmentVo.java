@@ -4,8 +4,8 @@ public class DepartmentVo {
 
 	// 필드
 		private int department_id;
+		private String user_id;
 		private String department_name;
-		private String team_leader;
 		
 		// 생성자
 		public DepartmentVo() {
@@ -17,13 +17,6 @@ public class DepartmentVo {
 			this.department_id = department_id;
 			this.department_name = department_name;
 		}
-
-		public DepartmentVo(int department_id, String department_name, String team_leader) {
-			super();
-			this.department_id = department_id;
-			this.department_name = department_name;
-			this.team_leader = team_leader;
-		}
 		
 		// 메소드 - getter/setter
 		public int getDepartment_id() {
@@ -34,12 +27,12 @@ public class DepartmentVo {
 			this.department_id = department_id;
 		}
 
-		public String getTeam_leader() {
-			return team_leader;
+		public String getUser_id() {
+			return user_id;
 		}
 
-		public void setTeam_leader(String team_leader) {
-			this.team_leader = team_leader;
+		public void setUser_id(String user_id) {
+			this.user_id = user_id;
 		}
 
 		public String getDepartment_name() {
@@ -53,7 +46,7 @@ public class DepartmentVo {
 		// 메소드 - 일반
 		@Override
 		public String toString() {
-			return "DepartmentVo [department_id=" + department_id + ", team_leader=" + team_leader + ", department_name="
+			return "DepartmentVo [department_id=" + department_id + ", user_id=" + user_id + ", department_name="
 					+ department_name + "]";
 		}
 
